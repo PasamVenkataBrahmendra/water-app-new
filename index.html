@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWH Smart Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <h1 class="title">🌎 AWH Smart Dashboard</h1>
+        
+        <div class="grid-container">
+            <div class="card">
+                <h2>💧 Humidity</h2>
+                <p id="humidity">65%</p>
+            </div>
+            <div class="card">
+                <h2>🌡 Temperature</h2>
+                <p id="temperature">28°C</p>
+            </div>
+            <div class="card">
+                <h2>🚰 Water Level</h2>
+                <p id="water-level">75%</p>
+            </div>
+        </div>
+
+        <canvas id="waterChart"></canvas>
+
+        <div class="button-group">
+            <button class="btn btn-on" onclick="toggleDevice(true)">Turn ON</button>
+            <button class="btn btn-off" onclick="toggleDevice(false)">Turn OFF</button>
+        </div>
+        
+        <p class="forecast">🔮 Forecast: <span id="forecast">High water collection expected tomorrow</span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
