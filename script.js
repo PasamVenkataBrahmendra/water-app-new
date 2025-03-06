@@ -1,31 +1,28 @@
-// Simulated Real-time Updates
-setInterval(() => {
-    document.getElementById("humidity").innerText = `${Math.floor(Math.random() * 10) + 60}%`;
-    document.getElementById("temperature").innerText = `${Math.floor(Math.random() * 10) + 25}°C`;
-    document.getElementById("water-level").innerText = `${Math.floor(Math.random() * 20) + 70}%`;
-}, 5000);
+document.addEventListener("DOMContentLoaded", () => {
+    let humidity = 65;
+    let temperature = 28;
+    let waterLevel = 75;
 
-// Toggle Device ON/OFF
-function toggleDevice(state) {
-    alert(`Device turned ${state ? "ON" : "OFF"}`);
-}
-
-// Water Collection Trend Chart
-const ctx = document.getElementById("waterChart").getContext("2d");
-new Chart(ctx, {
-    type: "line",
-    data: {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        datasets: [{
-            label: "Water Collected (Liters)",
-            data: [10, 15, 12, 20, 18, 25, 30],
-            borderColor: "#00C853",
-            borderWidth: 2,
-            fill: false
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false
+    function updateDashboard() {
+        document.getElementById("humidity").textContent = `${humidity}%`;
+        document.getElementById("temperature").textContent = `${temperature}°C`;
+        document.getElementById("water-level").textContent = `${waterLevel}%`;
     }
+
+    function simulateSensorUpdates() {
+        setInterval(() => {
+            humidity = Math.floor(Math.random() * (80 - 60 + 1) + 60);
+            temperature = Math.floor(Math.random() * (35 - 25 + 1) + 25);
+            waterLevel = Math.floor(Math.random() * (90 - 70 + 1) + 70);
+            updateDashboard();
+        }, 5000);
+    }
+
+    function toggleDevice(isOn) {
+        let status = isOn ? "ON" : "OFF";
+        alert(`AWH Device turned ${status}`);
+    }
+
+    updateDashboard();
+    simulateSensorUpdates();
 });
