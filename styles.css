@@ -1,100 +1,96 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
-
-* {
+/* Background Animation */
+body, html {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    height: 100%;
     font-family: 'Arial', sans-serif;
-}
-
-body {
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: url('https://source.unsplash.com/1600x900/?nature,water') no-repeat center center/cover;
-    filter: blur(5px);
-    z-index: -1;
-}
-
-.overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.dashboard {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
     color: white;
-    width: 90%;
-    max-width: 600px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    text-align: center;
+    overflow: hidden;
 }
 
+.background-animation {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://source.unsplash.com/random/1600x900/?water,clouds') no-repeat center center/cover;
+    z-index: -1;
+    animation: fade 10s infinite alternate;
+}
+
+@keyframes fade {
+    0% { filter: brightness(70%); }
+    100% { filter: brightness(100%); }
+}
+
+/* Container */
+.container {
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* Title */
 .title {
-    font-size: 24px;
+    font-size: 2em;
+    font-weight: bold;
     margin-bottom: 20px;
-    text-transform: uppercase;
 }
 
+/* Grid Cards */
 .grid-container {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
     text-align: center;
-    width: 30%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s;
 }
 
-.icon {
-    font-size: 30px;
-    margin-bottom: 10px;
+.card:hover {
+    transform: scale(1.1);
 }
 
+/* Buttons */
 .button-group {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
-.button-primary, .button-secondary {
+.btn {
     padding: 10px 20px;
+    margin: 5px;
     border: none;
-    color: white;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    transition: 0.3s;
 }
 
-.button-primary {
-    background: #28a745;
+.btn-on {
+    background-color: #4CAF50;
+    color: white;
 }
 
-.button-secondary {
-    background: #dc3545;
+.btn-off {
+    background-color: #E74C3C;
+    color: white;
 }
 
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Forecast */
 .forecast {
+    font-size: 18px;
     margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    font-style: italic;
 }
